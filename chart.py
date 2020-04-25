@@ -12,10 +12,14 @@ WBT=np.arange(start=5, stop=30, step=5)
 #phi= mass_watervapour/mass_saturation# relative humidity
 #h= (1.005 + 1.88*W)*t + 2500*W # enthalpy
 enthalpy= []
-
-for i in range(0,len(specific_humidity)):
-    for j in range(0,len(DBT)):
+x=[]
+y=[]
+for j in range(0,len(DBT)):
+    for i in range(0,len(specific_humidity)):
         h=(1.005 + 1.88*specific_humidity[i])*DBT[j] + 2500*specific_humidity[i]
         enthalpy.append(h)
-    plt.plot(enthalpy,DBT,specific_humidity)
-    plt.show()
+        x.append(DBT[j])
+        y.append(h)
+plt.scatter(x,y)
+print(y)
+plt.show()
